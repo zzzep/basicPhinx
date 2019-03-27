@@ -3,6 +3,10 @@
  * @author Giuseppe Fechio <giuseppe.fechio@gmail.com>
  */
 
+
+use Zepp\Phinx\Migration;
+use Zepp\Phinx\IBaseMigration;
+
 class CreatingMigrationExample extends Migration implements IBaseMigration
 {
     protected $tableName = 'example_migration';

@@ -3,6 +3,8 @@
  * @author Giuseppe Fechio <giuseppe.fechio@gmail.com>
  */
 
+namespace Zepp\Phinx;
+
 /**
  * Interface IBaseMigration
  */

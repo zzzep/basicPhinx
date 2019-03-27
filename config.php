@@ -2,9 +2,9 @@
 
 return [
     'paths' => [
-        'migrations' => '.'
+        'migrations' => './src/Migrations'
     ],
-    'migration_base_class' => '',
+    'migration_base_class' => 'Zepp\Phinx\Migration',
     'environments' => [
         'default_migration_table' => 'phinxlog',
         'default_database' => 'base',
