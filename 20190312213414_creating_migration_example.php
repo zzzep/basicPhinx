@@ -1,8 +1,6 @@
 <?php
 /**
- * Copyright (c). Endurance International Group.
- * All rights reserved.
- * @author Giuseppe Fechio <giuseppe.fechio@endurance.com>
+ * @author Giuseppe Fechio <giuseppe.fechio@gmail.com>
  */
 
 class CreatingMigrationExample extends Migration implements IBaseMigration

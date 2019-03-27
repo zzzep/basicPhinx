@@ -1,5 +1,11 @@
 ## How to Use
 
+Requires:
+```bash
+composer require robmorgan/phinx
+composer require illuminate/database
+```
+
 Run composer to install phinx 
 ```bash
 composer install ; composer update
@@ -12,7 +18,7 @@ Just create, edit, run and rollback
 To create New Migration:
  
 ```Bash
-  php vendor/bin/phinx create MyNewMigration -c migration.php
+  php vendor/bin/phinx create MyNewMigration -c config.php
 ```
 
 That will show you the created File
@@ -36,19 +42,19 @@ Just edit file `src/Migrations/20190308222306_my_new_migration.php`
 
 To run migration (ALL not migrated):
 ```bash
- php vendor/bin/phinx migrate -c migration.php
+ php vendor/bin/phinx migrate -c config.php
 ```
 
 To rollback migration (last migration):
 ```bash
- # php vendor/bin/phinx rollback -c migration.php -- BE CAREFUL
+ # php vendor/bin/phinx rollback -c config.php -- BE CAREFUL
 ```
 
 Example Migration File
 ```PHP
 <?php
 /**
- * @author Giuseppe Fechio <giuseppe.fechio@endurance.com>
+ * @author Giuseppe Fechio <giuseppe.fechio@gmail.com>
  */
 
 class CreatingMigrationExample extends Migration implements IBaseMigration
@@ -129,37 +135,37 @@ class CreatingMigrationExample extends Migration implements IBaseMigration
 
 - Create Migration
   - In root path
-  - `php vendor/bin/phinx create WhatMyMigrationWillDoInCamelCase -c migration.php`
+  - `php vendor/bin/phinx create WhatMyMigrationWillDoInCamelCase -c config.php`
   - Create migration with single responsibility
 - Edit Migration File
   - Use method up() to migration
   - Use method down() to rollback
   - Example above
 - Running Migration In DEV
-  - `php vendor/bin/phinx migrate -c migration.php`
+  - `php vendor/bin/phinx migrate -c config.php`
 - Running Migration In Test
-  - `php vendor/bin/phinx migrate -c migration.php`
+  - `php vendor/bin/phinx migrate -c config.php`
 - **Before deploy rename migration version to current timestamp**
 - In case of rollback
-  - `php vendor/bin/phinx rollback -c migration.php -d {VERSION}`
+  - `php vendor/bin/phinx rollback -c config.php -d {VERSION}`
   
 
 ### Run/Rollback by dates
 
 Migration **to** Specific dates 
 ```bash
-  php vendor/bin/phinx migrate -c migration.php -d 20190308193425
-  php vendor/bin/phinx migrate -c migration.php -d 201903081934
-  php vendor/bin/phinx migrate -c migration.php -d 2019030819
-  php vendor/bin/phinx migrate -c migration.php -d 20190308
+  php vendor/bin/phinx migrate -c config.php -d 20190308193425
+  php vendor/bin/phinx migrate -c config.php -d 201903081934
+  php vendor/bin/phinx migrate -c config.php -d 2019030819
+  php vendor/bin/phinx migrate -c config.php -d 20190308
 ```
 
 Rollback **until** specific dates
 ```bash
-  php vendor/bin/phinx rollback -c migration.php -d 20190308193425
-  php vendor/bin/phinx rollback -c migration.php -d 201903081934
-  php vendor/bin/phinx rollback -c migration.php -d 2019030819
-  php vendor/bin/phinx rollback -c migration.php -d 20190308
+  php vendor/bin/phinx rollback -c config.php -d 20190308193425
+  php vendor/bin/phinx rollback -c config.php -d 201903081934
+  php vendor/bin/phinx rollback -c config.php -d 2019030819
+  php vendor/bin/phinx rollback -c config.php -d 20190308
 ```
 
 *OBS:* 
@@ -170,12 +176,12 @@ Rollback **until** specific dates
 
 Migration **to** Specific version 
 ```bash
-  php vendor/bin/phinx migrate -c migration.php -t 20190308193425
+  php vendor/bin/phinx migrate -c config.php -t 20190308193425
 ```
 
 Rollback **until** specific version
 ```bash
-  php vendor/bin/phinx rollback -c migration.php -t 20190308193425
+  php vendor/bin/phinx rollback -c config.php -t 20190308193425
 ```
 
 *OBS:*
@@ -188,7 +194,7 @@ Rollback **until** specific version
 
 Command Example:
 ```bash
-php vendor/bin/phinx migrate -c migration.php --dry-run
+php vendor/bin/phinx migrate -c config.php --dry-run
 ```
 
 Output Example:
@@ -201,7 +207,7 @@ using migration paths
  - {PATH_MIGRATION}
 warning no environment specified, defaulting to: base
 using adapter mysql
-using database whmcs_br
+using database {DATABASE}
 
  == 20190312213414 CreatingMigrationExample: migrating
 START TRANSACTION
