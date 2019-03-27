@@ -2,7 +2,7 @@
 
 return [
     'paths' => [
-        'migrations' => ''
+        'migrations' => '.'
     ],
     'migration_base_class' => '',
     'environments' => [
